@@ -27,25 +27,26 @@ nesta ordem (usar todas as disponíveis):
 ## Formato de saída (imitar a densidade do /usage)
 
 ```
-📊 Mesa de despacho — <data hora>
+Mesa de despacho — <data hora>
 
-🚀 EM VOO (<n>)
+EM VOO (<n>)
   <tarefa> · <executor|reviewer> · <desde hh:mm> · card #N
 
-🔍 EM REVIEW (<n>)
+EM REVIEW (<n>)
   PR #N <repo> — <título curto> · rodada <1ª|re-review>
 
-⛔ TRAVADO ESPERANDO VOCÊ (<n>)
+ESPERANDO O USUÁRIO (<n>)
   <item> — <o que falta decidir/fazer>
 
-✅ CONCLUÍDO HOJE (<n>)
+CONCLUÍDO HOJE (<n>)
   PR #N mergeado — <o quê> · card #N fechado
 
-📋 FILA (ainda não despachado)
+FILA (ainda não despachado)
   <item>
 ```
 
 Regras:
+- SEM emoji em lugar nenhum do painel — títulos de seção em CAIXA ALTA e texto puro.
 - Uma linha por item; sem parágrafos. Truncar títulos em ~60 chars.
 - "Travado esperando você" lista APENAS itens cuja próxima ação é do usuário
   (decisão de negócio, ação manual em console externo, rotulagem) — nunca
