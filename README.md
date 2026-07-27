@@ -33,11 +33,20 @@ Princípios:
 ## Instalação
 
 ```bash
-# copie a pasta da skill para o diretório de skills do Claude Code:
+# copie as pastas das skills para o diretório de skills do Claude Code:
 cp -r despachar ~/.claude/skills/despachar
+cp -r state ~/.claude/skills/state
 ```
 
 Na próxima sessão do Claude Code, invoque com `/despachar <pedidos>`.
+
+## /state — o painel da mesa
+
+Skill companheira: `/state` renderiza um painel denso (no estilo do `/usage`)
+com o que está **em voo**, **em review**, **travado esperando você** e
+**concluído hoje** — cruzando o contexto da sessão, o board de tarefas
+(registro definitivo) e os PRs abertos via `gh`, apontando divergências
+entre as fontes em vez de escondê-las.
 
 ## Configuração
 
