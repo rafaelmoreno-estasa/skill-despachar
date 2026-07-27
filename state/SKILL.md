@@ -16,7 +16,7 @@ nesta ordem (usar todas as disponíveis):
    de Trello):
    ```bash
    cd <caminho-da-skill-trello>
-   TRELLO_BOARD=<board> python trello list
+   TRELLO_BOARD=<board> python trello cards "Em andamento"
    ```
    O board vence a memória da conversa em caso de conflito.
 3. **PRs abertos** — para cada repo que aparecer nos cards/contexto:
