@@ -37,9 +37,28 @@ Princípios:
 cp -r despachar ~/.claude/skills/despachar
 cp -r state ~/.claude/skills/state
 cp -r trello-delegacao ~/.claude/skills/trello-delegacao
+
+# copie os subagentes que as skills despacham:
+cp agents/executor.md agents/code-reviewer.md ~/.claude/agents/
 ```
 
 Na próxima sessão do Claude Code, invoque com `/despachar <pedidos>`.
+
+## Subagentes (`agents/`)
+
+As skills despacham para dois tipos de agente, incluídos no repo:
+
+- **`executor`** — implementa a tarefa com escopo fechado (menor diff viável,
+  verificação com evidência fresca, dúvida de negócio trava em vez de
+  inventar).
+- **`code-reviewer`** — revisor **read-only** (`Write`/`Edit` bloqueados),
+  achados com severidade + arquivo:linha + correção sugerida, veredito
+  APPROVE / REQUEST CHANGES / COMMENT.
+
+Se você já tem agentes com esses nomes em `~/.claude/agents/` (ex.: instalados
+pelo oh-my-claudecode), os seus têm precedência — não precisa copiar. Sem nenhuma definição, o Claude Code cai no
+agente `general-purpose`: funciona, mas perde as guardas (reviewer deixa de
+ser read-only, executor perde a disciplina de escopo).
 
 ## /state — o painel da mesa
 
