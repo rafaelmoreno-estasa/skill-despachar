@@ -15,6 +15,10 @@ confere o que está pronto olhando o board, não a memória da conversa.
 > Sem board, mantenha um `DESPACHOS.md` no projeto como registro — o
 > princípio é o mesmo: nada termina só na conversa.
 
+Para cards que **já existem** no board com spec própria, usar a skill irmã
+`trello-delegacao` (neste mesmo repositório); esta skill é para trabalho que
+chega pela conversa.
+
 **Modo sessão (fila contínua).** A partir da primeira invocação, a sessão
 inteira vira uma mesa de despacho:
 
