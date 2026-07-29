@@ -64,9 +64,19 @@ Na dúvida entre dois níveis, usar o maior.
 
 ## 3. Despachar
 
-Agent tool, tipo `executor` (`general-purpose` para pesquisa), com o `model`
-do passo 2. Tarefas independentes → todos os despachos **num único bloco**,
-em paralelo. Prompt do executor:
+Agent tool, tipo `executor` (`general-purpose` apenas para pesquisa/
+investigação read-only), com o `model` do passo 2. Tarefas independentes →
+todos os despachos **num único bloco**, em paralelo.
+
+**Regra dura — agentes deste repositório.** Os tipos `executor` e
+`code-reviewer` referem-se às definições em `agents/` deste repositório,
+instaladas em `~/.claude/agents/`. Se o tipo não existir no ambiente,
+**pare e instrua a instalação** (`cp -f agents/*.md ~/.claude/agents/`) em
+vez de despachar para `general-purpose` ou outro substituto — as garantias
+do fluxo (escopo fechado do executor, reviewer read-only) dependem dessas
+definições.
+
+Prompt do executor:
 
 ```
 Você é um agente EXECUTOR despachado. A tarefa e o Definition of Done abaixo
