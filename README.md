@@ -55,8 +55,8 @@ As skills despacham para dois tipos de agente, incluídos no repo:
   achados com severidade + arquivo:linha + correção sugerida, veredito
   APPROVE / REQUEST CHANGES / COMMENT.
 
-Se você já tem agentes com esses nomes em `~/.claude/agents/` (ex.: instalados
-pelo oh-my-claudecode), os seus têm precedência — não precisa copiar. Sem nenhuma definição, o Claude Code cai no
+Se você já tem agentes com esses nomes em `~/.claude/agents/`, os seus têm
+precedência — não precisa copiar. Sem nenhuma definição, o Claude Code cai no
 agente `general-purpose`: funciona, mas perde as guardas (reviewer deixa de
 ser read-only, executor perde a disciplina de escopo).
 
