@@ -52,6 +52,21 @@ inventar.
 pendente. Apresentar a lista `tarefa → modelo → DoD` (uma linha cada) e
 despachar em seguida, sem pedir permissão.
 
+## 1b. Quebra, paralelismo e quick wins
+
+Quebrar por **independência**, não por pressa: só paraleliza o que não
+compartilha arquivos nem decisões (módulos diferentes, pesquisa +
+implementação, frentes sem interseção) — e cada agente que muta o repo
+trabalha na sua própria worktree. Feature coesa (migration → serviço → UI no
+mesmo módulo) NÃO se fatia: o custo de integrar as metades come o ganho.
+
+**Quick wins primeiro**: se a entrega aceita corte incremental, a tarefa 1 é o
+menor recorte que já gera valor em produção (PR pequeno, mergeável hoje); os
+refinamentos viram tarefa 2 despachada em seguida — de preferência
+**retomando o mesmo agente** (SendMessage), que na prática custa cerca de
+metade de um despacho fresco por já carregar o contexto. Apresentar na triagem
+qual é o quick win e o que ficou para a segunda leva.
+
 ## 2. Rotear o modelo pela dificuldade
 
 | Dificuldade | Sinais | `model` |
@@ -115,6 +130,28 @@ Dicas de campo (aprendidas em produção):
 - Primeiro passo de todo executor num repo: `git remote -v` para confirmar
   que está no repo certo.
 - Tarefas paralelas que precisam de servidor de teste: cada uma na sua porta.
+
+## 3b. Previsão de duração
+
+Ao apresentar a triagem, estimar quanto tempo cada tarefa vai levar
+consultando `historico_despachos.jsonl` (na pasta desta skill; criado no
+primeiro registro): filtrar por tags parecidas (modelo, módulo, migration,
+pesquisa, ui, fix, feature...) e usar a **mediana** das durações reais como
+previsão — reportar como "~25 min (base: 4 parecidas)". Sem histórico
+parecido → dizer "sem base histórica" e usar a classe: haiku 2–5 min ·
+sonnet 5–20 · opus 20–50 · pesquisa/discovery 5–15.
+
+Ao receber o retorno (a task-notification traz `duration_ms` e tokens),
+**antes de fechar o card**, registrar UMA linha no jsonl via append:
+
+```json
+{"data":"2026-08-11","titulo":"...","tipo":"executor|pesquisa|review|auditoria","model":"opus","tags":["modulo","migration"],"previsto_min":25,"real_min":44,"tokens":193472,"card":"#132","nota":"por que desviou, se desviou"}
+```
+
+Previsto × real com desvio grande (>2x para qualquer lado) → citar no delta
+com a causa ("subestimei: tinha migration escondida") — é assim que a
+previsão calibra. O histórico é da mesa, não do projeto: nunca commitar no
+repositório do projeto.
 
 ## 3.5 Code review automático dos PRs
 
